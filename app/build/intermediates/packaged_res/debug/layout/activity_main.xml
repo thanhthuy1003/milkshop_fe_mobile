@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_light">
+
+    <!-- HEADER: Tái sử dụng layout_header -->
+    <include
+        android:id="@+id/included_header"
+        layout="@layout/layout_header" />
+
+    <!-- Product List -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvProducts"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/included_header"
+        android:layout_above="@id/bottom_navigation_container"
+        android:padding="8dp"/>
+
+    <!-- FOOTER: Tái sử dụng layout_footer -->
+    <LinearLayout
+        android:id="@+id/bottom_navigation_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <!-- Bottom "Buy" Prompt for Guest (Hiện trên Footer khi chưa login) -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardGuestPrompt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:background="@color/primary_light_blue"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Đăng nhập để đặt món ngay!"
+                    android:textColor="@color/black"
+                    android:textSize="13sp"
+                    android:textStyle="bold"/>
+
+                <Button
+                    android:id="@+id/btnPromptLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Login"
+                    android:textSize="11sp"
+                    android:backgroundTint="@color/primary_dark_blue"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <include layout="@layout/layout_footer" />
+    </LinearLayout>
+
+</RelativeLayout>
