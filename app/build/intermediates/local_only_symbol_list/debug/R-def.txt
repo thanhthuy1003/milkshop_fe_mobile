@@ -13,6 +13,7 @@ color teal_700
 color white
 drawable bg_circle_button
 drawable bg_edittext
+drawable ic_launcher_background
 id bottom_navigation
 id bottom_navigation_container
 id btnAdd

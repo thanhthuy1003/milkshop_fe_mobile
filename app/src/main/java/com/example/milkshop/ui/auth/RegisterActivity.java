@@ -35,26 +35,45 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        edtUsername = findViewById(R.id.edtFullName); // Tạm dùng id cũ hoặc bạn nên cập nhật XML
-        edtFirstName = new EditText(this); // Trong thực tế hãy thêm vào XML
-        edtLastName = new EditText(this);
+        edtUsername = findViewById(R.id.edtUsername);
+        edtFirstName = findViewById(R.id.edtFirstName);
+        edtLastName = findViewById(R.id.edtLastName);
         edtEmail = findViewById(R.id.edtEmail);
         edtPhone = findViewById(R.id.edtPhone);
         edtPassword = findViewById(R.id.edtPassword);
-        edtConfirmPassword = new EditText(this);
+        edtConfirmPassword = findViewById(R.id.edtConfirmPassword);
         btnRegister = findViewById(R.id.btnRegister);
         tvBackToLogin = findViewById(R.id.tvBackToLogin);
     }
 
     private void handleRegister() {
+        String username = edtUsername.getText().toString().trim();
+        String firstName = edtFirstName.getText().toString().trim();
+        String lastName = edtLastName.getText().toString().trim();
+        String phone = edtPhone.getText().toString().trim();
+        String email = edtEmail.getText().toString().trim();
+        String password = edtPassword.getText().toString().trim();
+        String confirmPassword = edtConfirmPassword.getText().toString().trim();
+
+        if (username.isEmpty() || firstName.isEmpty() || lastName.isEmpty() || 
+            phone.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+            Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!password.equals(confirmPassword)) {
+            Toast.makeText(this, "Mật khẩu xác nhận không khớp", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         RegisterRequest request = new RegisterRequest(
-                edtUsername.getText().toString().trim(),
-                "First", // Thay bằng dữ liệu từ UI
-                "Last",  // Thay bằng dữ liệu từ UI
-                edtPhone.getText().toString().trim(),
-                edtEmail.getText().toString().trim(),
-                edtPassword.getText().toString().trim(),
-                edtPassword.getText().toString().trim() // Confirm password
+                username,
+                firstName,
+                lastName,
+                phone,
+                email,
+                password,
+                confirmPassword
         );
 
         RetrofitClient.getApiService().signUp(request).enqueue(new Callback<ResponseBody>() {
