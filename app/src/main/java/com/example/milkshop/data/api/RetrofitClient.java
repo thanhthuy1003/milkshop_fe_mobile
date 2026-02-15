@@ -1,15 +1,13 @@
 package com.example.milkshop.data.api;
 
+import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
-    /**
-     * LƯU Ý CHO MÁY THẬT:
-     * Đã cập nhật IP: 192.168.1.248
-     */
+    // Địa chỉ IP máy tính của bạn
     private static final String IP_ADDRESS = "192.168.1.248"; 
     private static final String BASE_URL = "http://" + IP_ADDRESS + ":5000/";
     
@@ -22,6 +20,9 @@ public class RetrofitClient {
             
             OkHttpClient client = new OkHttpClient.Builder()
                     .addInterceptor(logging)
+                    .connectTimeout(30, TimeUnit.SECONDS) // Tăng thời gian chờ kết nối
+                    .readTimeout(30, TimeUnit.SECONDS)
+                    .writeTimeout(30, TimeUnit.SECONDS)
                     .build();
 
             retrofit = new Retrofit.Builder()
