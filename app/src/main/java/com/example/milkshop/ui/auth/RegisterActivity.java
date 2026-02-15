@@ -1,6 +1,7 @@
 package com.example.milkshop.ui.auth;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -11,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.milkshop.R;
 import com.example.milkshop.data.api.RetrofitClient;
 import com.example.milkshop.data.model.RegisterRequest;
+
+import java.io.IOException;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -83,13 +86,22 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this, "Đăng ký thành công! Vui lòng kiểm tra email.", Toast.LENGTH_LONG).show();
                     finish();
                 } else {
-                    Toast.makeText(RegisterActivity.this, "Đăng ký thất bại: " + response.code(), Toast.LENGTH_SHORT).show();
+                    String errorMessage = "Đăng ký thất bại. Mã lỗi: " + response.code();
+                    if (response.errorBody() != null) {
+                        try {
+                            errorMessage += "\n" + response.errorBody().string();
+                        } catch (IOException e) {
+                            Log.e("RegisterActivity", "Error parsing error body", e);
+                        }
+                    }
+                    Toast.makeText(RegisterActivity.this, errorMessage, Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Toast.makeText(RegisterActivity.this, "Lỗi kết nối: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("RegisterActivity", "API Call Failed", t);
+                Toast.makeText(RegisterActivity.this, "Lỗi kết nối: " + t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
