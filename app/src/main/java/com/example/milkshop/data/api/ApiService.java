@@ -16,9 +16,12 @@ import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ApiService {
+    // --- Authentication ---
     @POST("api/authentication/login")
     Call<LoginResponse> login(@Body LoginRequest loginRequest);
 
@@ -28,19 +31,30 @@ public interface ApiService {
     @POST("api/authentication/reset-password")
     Call<ResponseBody> resetPassword(@Body ResetPasswordRequest resetPasswordRequest);
 
-    @GET("api/products")
-    Call<List<Product>> getProducts();
+    @POST("api/authentication/forgot-password")
+    Call<ResponseBody> forgotPassword(@Query("email") String email);
 
-    // --- Cart Endpoints ---
+    // --- Product Management (Guest/Buyer/Seller) ---
+    @GET("api/products")
+    Call<List<Product>> getProducts(
+            @Query("categoryId") Integer categoryId,
+            @Query("brandId") Integer brandId,
+            @Query("searchTerm") String searchTerm
+    );
+
+    @POST("api/products")
+    Call<ResponseBody> createProduct(@Body Product product);
+
+    @PATCH("api/products/{id}")
+    Call<ResponseBody> updateProduct(@Path("id") int id, @Body Product product);
+
+    @DELETE("api/products/{id}")
+    Call<ResponseBody> deleteProduct(@Path("id") int id);
+
+    // --- Others (Cart, Checkout, Profile...) ---
     @GET("api/user/{userId}/cart")
     Call<List<CartItem>> getCart(@Path("userId") String userId);
-
-    @POST("api/user/{userId}/cart")
-    Call<ResponseBody> addToCart(@Path("userId") String userId, @Body CartItem item);
-
-    @PATCH("api/user/{userId}/cart/{productId}")
-    Call<ResponseBody> updateCartQuantity(@Path("userId") String userId, @Path("productId") int productId, @Body int quantity);
-
-    @DELETE("api/user/{userId}/cart/{productId}")
-    Call<ResponseBody> removeFromCart(@Path("userId") String userId, @Path("productId") int productId);
+    
+    @POST("api/checkout")
+    Call<ResponseBody> checkout(@Body Object checkoutRequest);
 }

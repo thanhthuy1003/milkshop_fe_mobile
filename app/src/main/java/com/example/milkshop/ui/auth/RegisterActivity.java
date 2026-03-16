@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.milkshop.R;
@@ -81,27 +82,27 @@ public class RegisterActivity extends AppCompatActivity {
 
         RetrofitClient.getApiService().signUp(request).enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(RegisterActivity.this, "Đăng ký thành công! Vui lòng kiểm tra email.", Toast.LENGTH_LONG).show();
                     finish();
                 } else {
-                    String errorMessage = "Đăng ký thất bại. Mã lỗi: " + response.code();
-                    if (response.errorBody() != null) {
-                        try {
-                            errorMessage += "\n" + response.errorBody().string();
-                        } catch (IOException e) {
-                            Log.e("RegisterActivity", "Error parsing error body", e);
+                    StringBuilder errorMessage = new StringBuilder("Đăng ký thất bại. Mã lỗi: " + response.code());
+                    try (ResponseBody errorBody = response.errorBody()) {
+                        if (errorBody != null) {
+                            errorMessage.append("\n").append(errorBody.string());
                         }
+                    } catch (IOException e) {
+                        Log.e("RegisterActivity", "Error parsing error body", e);
                     }
-                    Toast.makeText(RegisterActivity.this, errorMessage, Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterActivity.this, errorMessage.toString(), Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
                 Log.e("RegisterActivity", "API Call Failed", t);
-                Toast.makeText(RegisterActivity.this, "Lỗi kết nối: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(RegisterActivity.this, "Lỗi kết nối: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

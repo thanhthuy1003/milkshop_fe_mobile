@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_light">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="THÔNG TIN GIAO HÀNG"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@color/primary_dark_blue"
+            android:layout_marginBottom="16dp"/>
+
+        <EditText
+            android:id="@+id/edtReceiverName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Tên người nhận"
+            android:background="@drawable/bg_edittext"
+            android:paddingLeft="16dp"
+            android:layout_marginBottom="12dp"/>
+
+        <EditText
+            android:id="@+id/edtReceiverPhone"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Số điện thoại"
+            android:inputType="phone"
+            android:background="@drawable/bg_edittext"
+            android:paddingLeft="16dp"
+            android:layout_marginBottom="12dp"/>
+
+        <EditText
+            android:id="@+id/edtReceiverAddress"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:hint="Địa chỉ giao hàng"
+            android:gravity="top"
+            android:padding="12dp"
+            android:background="@drawable/bg_edittext"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PHƯƠNG THỨC THANH TOÁN"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <RadioGroup
+            android:id="@+id/rgPaymentMethod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:id="@+id/rbCOD"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thanh toán khi nhận hàng (COD)"
+                android:checked="true"/>
+            <RadioButton
+                android:id="@+id/rbOnline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thanh toán trực tuyến (PayOS)"/>
+        </RadioGroup>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DDDDDD"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnConfirmCheckout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="XÁC NHẬN ĐẶT HÀNG"
+            android:backgroundTint="@color/primary_blue"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:cornerRadius="12dp" />
+
+    </LinearLayout>
+</ScrollView>

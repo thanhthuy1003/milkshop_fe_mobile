@@ -2,8 +2,11 @@ package com.example.milkshop;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -31,70 +34,58 @@ public class MainActivity extends AppCompatActivity implements ProductAdapter.On
     private Button btnPromptLogin;
     private ImageView imgCart;
     private CardView cardGuestPrompt;
-    private RecyclerView rvProducts;
+    private RecyclerView rvProducts, rvCategories;
     private ProductAdapter adapter;
     private BottomNavigationView bottomNavigationView;
+    private EditText edtSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        isGuest = getIntent().getBooleanExtra("IS_GUEST", false);
+        isGuest = getIntent().getBooleanExtra("IS_GUEST", true);
 
         initViews();
         setupRecyclerView();
         setupGuestUI();
         setupBottomNavigation();
+        setupSearch();
 
         imgCart.setOnClickListener(v -> {
             if (isGuest) {
                 showLoginRequiredToast();
             } else {
+                // Mở Activity giỏ hàng (sẽ triển khai sau)
                 Toast.makeText(this, "Mở giỏ hàng...", Toast.LENGTH_SHORT).show();
             }
         });
 
-        btnPromptLogin.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, LoginActivity.class));
-        });
+        btnPromptLogin.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, LoginActivity.class)));
         
-        loadProductsFromApi();
+        loadProducts(null, null); // Load tất cả sản phẩm lúc khởi đầu
     }
 
     private void initViews() {
         btnPromptLogin = findViewById(R.id.btnPromptLogin);
         cardGuestPrompt = findViewById(R.id.cardGuestPrompt);
         rvProducts = findViewById(R.id.rvProducts);
+        rvCategories = findViewById(R.id.rvCategories);
         imgCart = findViewById(R.id.imgCart);
+        edtSearch = findViewById(R.id.edtSearch);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
     }
 
-    private void setupBottomNavigation() {
-        bottomNavigationView.setOnItemSelectedListener(item -> {
-            int id = item.getItemId();
-            if (id == R.id.nav_home) {
-                return true;
-            } else if (id == R.id.nav_orders) {
-                if (isGuest) {
-                    showLoginRequiredToast();
-                    return false;
-                }
-                Toast.makeText(this, "Đang tải đơn hàng...", Toast.LENGTH_SHORT).show();
-                return true;
-            } else if (id == R.id.nav_dashboard) {
-                // Chỉ Seller/Admin mới xem được phần này, chúng ta sẽ check role sau
-                Toast.makeText(this, "Tính năng thống kê dành cho Seller", Toast.LENGTH_SHORT).show();
-                return true;
-            } else if (id == R.id.nav_profile) {
-                if (isGuest) {
-                    showLoginRequiredToast();
-                    return false;
-                }
-                Toast.makeText(this, "Mở trang cá nhân...", Toast.LENGTH_SHORT).show();
-                return true;
+    private void setupSearch() {
+        edtSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                loadProducts(null, s.toString());
             }
-            return false;
+            @Override
+            public void afterTextChanged(Editable s) {}
         });
     }
 
@@ -108,13 +99,21 @@ public class MainActivity extends AppCompatActivity implements ProductAdapter.On
         cardGuestPrompt.setVisibility(isGuest ? View.VISIBLE : View.GONE);
     }
 
-    private void showLoginRequiredToast() {
-        Toast.makeText(this, "Vui lòng đăng nhập để sử dụng tính năng này!", Toast.LENGTH_LONG).show();
-        startActivity(new Intent(this, LoginActivity.class));
+    private void setupBottomNavigation() {
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_home) return true;
+            if (isGuest) {
+                showLoginRequiredToast();
+                return false;
+            }
+            // Logic cho Buyer (Orders, Profile) sẽ được thêm ở đây
+            return true;
+        });
     }
 
-    private void loadProductsFromApi() {
-        RetrofitClient.getApiService().getProducts().enqueue(new Callback<List<Product>>() {
+    private void loadProducts(Integer categoryId, String searchTerm) {
+        RetrofitClient.getApiService().getProducts(categoryId, null, searchTerm).enqueue(new Callback<List<Product>>() {
             @Override
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                 if (response.isSuccessful() && response.body() != null) {
@@ -125,9 +124,14 @@ public class MainActivity extends AppCompatActivity implements ProductAdapter.On
 
             @Override
             public void onFailure(Call<List<Product>> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "Lỗi kết nối API", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Lỗi tải sản phẩm", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void showLoginRequiredToast() {
+        Toast.makeText(this, "Vui lòng đăng nhập để sử dụng tính năng này!", Toast.LENGTH_LONG).show();
+        startActivity(new Intent(this, LoginActivity.class));
     }
 
     @Override
@@ -135,6 +139,7 @@ public class MainActivity extends AppCompatActivity implements ProductAdapter.On
         if (isGuest) {
             showLoginRequiredToast();
         } else {
+            // Logic thêm vào giỏ hàng thực tế gọi API sẽ viết ở đây
             Toast.makeText(this, "Đã thêm " + product.getName() + " vào giỏ hàng", Toast.LENGTH_SHORT).show();
         }
     }
