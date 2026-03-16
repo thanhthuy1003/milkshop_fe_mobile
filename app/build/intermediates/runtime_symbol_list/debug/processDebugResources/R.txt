@@ -3114,17 +3114,22 @@ int id bounceEnd 0x7f080062
 int id bounceStart 0x7f080063
 int id btnAdd 0x7f080064
 int id btnAddToCart 0x7f080065
+int id btnChangePassword 0x7f080239
 int id btnCheckout 0x7f080066
 int id btnConfirmCheckout 0x7f08021f
 int id btnDetailAddToCart 0x7f080067
+int id btnEditProfile 0x7f08023a
 int id btnLogin 0x7f080068
+int id btnLogout 0x7f08023b
 int id btnManageOrders 0x7f080220
 int id btnManageProducts 0x7f080221
 int id btnMinus 0x7f080069
+int id btnMyVouchers 0x7f08023c
 int id btnPromptLogin 0x7f08006a
 int id btnRegister 0x7f08006b
 int id btnRemoveItem 0x7f08006c
 int id btnSendMessage 0x7f080222
+int id btnSendResetLink 0x7f08023d
 int id btnSubmitProduct 0x7f080223
 int id buttonPanel 0x7f08006d
 int id cache_measures 0x7f08006e
@@ -3211,6 +3216,7 @@ int id edtAddProductThumbnail 0x7f080229
 int id edtConfirmPassword 0x7f0800b9
 int id edtEmail 0x7f0800ba
 int id edtFirstName 0x7f0800bb
+int id edtForgotEmail 0x7f08023e
 int id edtLastName 0x7f0800bc
 int id edtMessage 0x7f08022a
 int id edtPassword 0x7f0800bd
@@ -3271,6 +3277,7 @@ int id imgCart 0x7f0800ef
 int id imgCartItem 0x7f0800f0
 int id imgProduct 0x7f0800f1
 int id imgProductDetail 0x7f0800f2
+int id imgProfileAvatar 0x7f08023f
 int id immediateStop 0x7f0800f3
 int id included 0x7f0800f4
 int id included_header 0x7f0800f5
@@ -3542,6 +3549,7 @@ int id transition_scene_layoutid_cache 0x7f0801f6
 int id transition_transform 0x7f0801f7
 int id triangle 0x7f0801f8
 int id tvBackToLogin 0x7f0801f9
+int id tvBackToLoginFromForgot 0x7f080240
 int id tvCartItemName 0x7f0801fa
 int id tvCartItemPrice 0x7f0801fb
 int id tvCartQuantity 0x7f0801fc
@@ -3555,6 +3563,8 @@ int id tvLogo 0x7f080203
 int id tvOrderCount 0x7f080237
 int id tvProductName 0x7f080204
 int id tvProductPrice 0x7f080205
+int id tvProfileEmail 0x7f080241
+int id tvProfileName 0x7f080242
 int id tvRevenue 0x7f080238
 int id tvTotalPrice 0x7f080206
 int id unchecked 0x7f080207
@@ -3697,9 +3707,11 @@ int layout activity_add_product 0x7f0b0072
 int layout activity_cart 0x7f0b001c
 int layout activity_chat 0x7f0b0073
 int layout activity_checkout 0x7f0b0074
+int layout activity_forgot_password 0x7f0b0076
 int layout activity_login 0x7f0b001d
 int layout activity_main 0x7f0b001e
 int layout activity_product_detail 0x7f0b001f
+int layout activity_profile 0x7f0b0077
 int layout activity_register 0x7f0b0020
 int layout activity_seller_dashboard 0x7f0b0075
 int layout custom_dialog 0x7f0b0021

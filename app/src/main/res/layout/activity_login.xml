@@ -3,63 +3,95 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="24dp"
-    android:background="@color/background_light"
+    android:padding="32dp"
+    android:background="@color/white"
     android:gravity="center">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="MILK SHOP"
-        android:textSize="32sp"
+        android:textSize="36sp"
         android:textStyle="bold"
-        android:textColor="@color/primary_dark_blue"
-        android:layout_marginBottom="40dp"/>
+        android:textColor="#2563EB"
+        android:layout_marginBottom="8dp"/>
+        
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Đăng nhập để tiếp tục"
+        android:textSize="16sp"
+        android:textColor="#6B7280"
+        android:layout_marginBottom="48dp"/>
 
     <EditText
         android:id="@+id/edtUsername"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="60dp"
         android:hint="Tên đăng nhập"
-        android:background="@drawable/bg_edittext"
-        android:paddingLeft="16dp"
+        android:background="@drawable/bg_edittext_modern"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:textColorHint="#9CA3AF"
         android:layout_marginBottom="16dp"/>
 
     <EditText
         android:id="@+id/edtPassword"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="60dp"
         android:hint="Mật khẩu"
         android:inputType="textPassword"
-        android:background="@drawable/bg_edittext"
-        android:paddingLeft="16dp"
-        android:layout_marginBottom="24dp"/>
+        android:background="@drawable/bg_edittext_modern"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:textColorHint="#9CA3AF"
+        android:layout_marginBottom="32dp"/>
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:text="Đăng Nhập"
-        android:backgroundTint="@color/primary_blue"
-        android:textColor="@color/black"
+        android:layout_height="60dp"
+        android:text="ĐĂNG NHẬP"
+        android:background="@drawable/bg_button_gradient"
+        android:textColor="@color/white"
+        android:textSize="16sp"
         android:textStyle="bold"/>
-
-    <TextView
-        android:id="@+id/tvBackToLogin"
+        
+    <ProgressBar
+        android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Chưa có tài khoản? Đăng ký ngay"
         android:layout_marginTop="16dp"
-        android:textColor="@color/primary_dark_blue"/>
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal">
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chưa có tài khoản? "
+            android:textColor="#6B7280"/>
+            
+        <TextView
+            android:id="@+id/tvBackToLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đăng ký ngay"
+            android:textStyle="bold"
+            android:textColor="#2563EB"/>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tvContinueAsGuest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tiếp tục với tư cách Khách"
-        android:layout_marginTop="24dp"
-        android:textColor="@color/black"
-        android:textStyle="italic"
+        android:text="Tiếp tục truy cập với tư cách Khách"
+        android:layout_marginTop="32dp"
+        android:textColor="#6B7280"
         android:padding="8dp"/>
 
 </LinearLayout>
