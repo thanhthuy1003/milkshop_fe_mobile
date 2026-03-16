@@ -1,6 +1,7 @@
 package com.example.milkshop.data.api;
 
 import com.example.milkshop.data.model.CartItem;
+import com.example.milkshop.data.model.CheckoutRequest;
 import com.example.milkshop.data.model.LoginRequest;
 import com.example.milkshop.data.model.LoginResponse;
 import com.example.milkshop.data.model.Product;
@@ -65,4 +66,11 @@ public interface ApiService {
     // --- Product Management ---
     @GET("api/products")
     Call<List<Product>> getProducts(@Query("categoryId") Integer categoryId, @Query("brandId") Integer brandId, @Query("searchTerm") String searchTerm);
+
+    @POST("api/products")
+    Call<ResponseBody> createProduct(@Body Product product);
+
+    // --- Checkout ---
+    @POST("api/checkout")
+    Call<ResponseBody> checkout(@Body CheckoutRequest checkoutRequest);
 }

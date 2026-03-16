@@ -58,6 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
         String email = edtEmail.getText().toString().trim();
         String password = edtPassword.getText().toString().trim();
         String confirmPassword = edtConfirmPassword.getText().toString().trim();
+        String role = "Buyer"; // Default role for registration
 
         if (username.isEmpty() || firstName.isEmpty() || lastName.isEmpty() || 
             phone.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
@@ -77,7 +78,8 @@ public class RegisterActivity extends AppCompatActivity {
                 phone,
                 email,
                 password,
-                confirmPassword
+                confirmPassword,
+                role
         );
 
         RetrofitClient.getApiService().signUp(request).enqueue(new Callback<ResponseBody>() {
