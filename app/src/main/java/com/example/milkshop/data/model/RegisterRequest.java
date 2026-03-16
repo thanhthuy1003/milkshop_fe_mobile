@@ -26,6 +26,9 @@ public class RegisterRequest {
     /** Xác nhận lại mật khẩu để tránh sai sót */
     private String confirmPassword;
 
+    /** Vai trò của người dùng (Customer, Buyer...) */
+    private String role;
+
     /**
      * Khởi tạo một đối tượng RegisterRequest với đầy đủ thông tin.
      *
@@ -36,8 +39,9 @@ public class RegisterRequest {
      * @param email           Email.
      * @param password        Mật khẩu.
      * @param confirmPassword Xác nhận mật khẩu.
+     * @param role            Vai trò của người dùng.
      */
-    public RegisterRequest(String username, String firstName, String lastName, String phoneNumber, String email, String password, String confirmPassword) {
+    public RegisterRequest(String username, String firstName, String lastName, String phoneNumber, String email, String password, String confirmPassword, String role) {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -45,6 +49,7 @@ public class RegisterRequest {
         this.email = email;
         this.password = password;
         this.confirmPassword = confirmPassword;
+        this.role = role;
     }
 
     /** @return Tên đăng nhập */
@@ -81,4 +86,9 @@ public class RegisterRequest {
     public String getConfirmPassword() { return confirmPassword; }
     /** @param confirmPassword Mật khẩu xác nhận mới */
     public void setConfirmPassword(String confirmPassword) { this.confirmPassword = confirmPassword; }
+
+    /** @return Vai trò của người dùng */
+    public String getRole() { return role; }
+    /** @param role Vai trò mới */
+    public void setRole(String role) { this.role = role; }
 }
