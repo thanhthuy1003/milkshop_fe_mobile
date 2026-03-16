@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.milkshop.app-mergeDebugResources-27:/values-es-rUS/values-es-rUS.xml",
+            "outputFile": "com.example.milkshop.app-mergeDebugResources-30:/values-es-rUS/values-es-rUS.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Hi\\.gradle\\caches\\8.13\\transforms\\74b74808373ab0205595ee932546f0dd\\transformed\\material-1.9.0\\res\\values-es-rUS\\values-es-rUS.xml",

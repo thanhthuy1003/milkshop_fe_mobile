@@ -11,8 +11,10 @@ color purple_700
 color teal_200
 color teal_700
 color white
+drawable bg_button_gradient
 drawable bg_circle_button
 drawable bg_edittext
+drawable bg_edittext_modern
 drawable ic_launcher_background
 id bottom_navigation
 id bottom_navigation_container
@@ -71,6 +73,7 @@ id nav_dashboard
 id nav_home
 id nav_orders
 id nav_profile
+id progressBar
 id rbCOD
 id rbOnline
 id rgPaymentMethod

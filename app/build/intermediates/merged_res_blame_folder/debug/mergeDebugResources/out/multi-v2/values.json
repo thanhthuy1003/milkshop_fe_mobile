@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.milkshop.app-mergeDebugResources-27:/values/values.xml",
+            "outputFile": "com.example.milkshop.app-mergeDebugResources-30:/values/values.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Hi\\.gradle\\caches\\8.13\\transforms\\00eeb73d329f60914ee7cf1a9183d8d3\\transformed\\core-1.9.0\\res\\values\\values.xml",
@@ -23,20 +23,20 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Hi\\.gradle\\caches\\8.13\\transforms\\0d1dc00389e8a078c23d80339048459d\\transformed\\jetified-savedstate-1.2.0\\res\\values\\values.xml",
+                    "source": "C:\\Users\\Hi\\.gradle\\caches\\8.13\\transforms\\8f99eca147a811c8455705bf51a8554e\\transformed\\lifecycle-viewmodel-2.6.1\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
                         "startOffsets": "55",
-                        "endColumns": "53",
-                        "endOffsets": "104"
+                        "endColumns": "49",
+                        "endOffsets": "100"
                     },
                     "to": {
-                        "startLines": "1849",
+                        "startLines": "1850",
                         "startColumns": "4",
-                        "startOffsets": "121795",
-                        "endColumns": "53",
-                        "endOffsets": "121844"
+                        "startOffsets": "121849",
+                        "endColumns": "49",
+                        "endOffsets": "121894"
                     }
                 },
                 {
@@ -148,6 +148,23 @@
                     }
                 },
                 {
+                    "source": "C:\\Users\\Hi\\.gradle\\caches\\8.13\\transforms\\3427b18a43a70d4c386cdf74a70b1447\\transformed\\jetified-savedstate-1.2.1\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "53",
+                        "endOffsets": "104"
+                    },
+                    "to": {
+                        "startLines": "1849",
+                        "startColumns": "4",
+                        "startOffsets": "121795",
+                        "endColumns": "53",
+                        "endOffsets": "121844"
+                    }
+                },
+                {
                     "source": "D:\\github\\milkshop_fe_mobile\\app\\src\\main\\res\\values\\colors.xml",
                     "from": {
                         "startLines": "14,7,12,13,11,2,3,4,5,6,8",
@@ -162,6 +179,23 @@
                         "startOffsets": "32507,32710,54851,54898,55103,55591,55638,55685,56429,56474,56640",
                         "endColumns": "50,41,46,51,52,46,46,46,44,44,41",
                         "endOffsets": "32553,32747,54893,54945,55151,55633,55680,55727,56469,56514,56677"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Hi\\.gradle\\caches\\8.13\\transforms\\3915c8e4a54f1361a4b50ccbe6389f80\\transformed\\lifecycle-runtime-2.6.1\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "42",
+                        "endOffsets": "93"
+                    },
+                    "to": {
+                        "startLines": "1847",
+                        "startColumns": "4",
+                        "startOffsets": "121692",
+                        "endColumns": "42",
+                        "endOffsets": "121730"
                     }
                 },
                 {
@@ -201,23 +235,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Hi\\.gradle\\caches\\8.13\\transforms\\61ee391a510be532be82d6c56e919209\\transformed\\lifecycle-runtime-2.5.1\\res\\values\\values.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "42",
-                        "endOffsets": "93"
-                    },
-                    "to": {
-                        "startLines": "1847",
-                        "startColumns": "4",
-                        "startOffsets": "121692",
-                        "endColumns": "42",
-                        "endOffsets": "121730"
-                    }
-                },
-                {
                     "source": "D:\\github\\milkshop_fe_mobile\\app\\src\\main\\res\\values\\strings.xml",
                     "from": {
                         "startLines": "1",
@@ -251,23 +268,6 @@
                         "endLines": "504,1109,1110,1111,1119,1120,1121,1786,12467",
                         "endColumns": "55,58,47,55,74,75,71,65,24",
                         "endOffsets": "25533,66288,66336,66392,67078,67154,67226,118578,752644"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Hi\\.gradle\\caches\\8.13\\transforms\\020b126365c45e0779394a83931bc5ff\\transformed\\lifecycle-viewmodel-2.5.1\\res\\values\\values.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "49",
-                        "endOffsets": "100"
-                    },
-                    "to": {
-                        "startLines": "1850",
-                        "startColumns": "4",
-                        "startOffsets": "121849",
-                        "endColumns": "49",
-                        "endOffsets": "121894"
                     }
                 },
                 {
