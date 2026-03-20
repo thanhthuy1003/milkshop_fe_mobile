@@ -13,17 +13,27 @@
         android:usesCleartextTraffic="true">
         
         <activity
-            android:name=".ui.auth.LoginActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        
+        <activity
+            android:name=".ui.auth.LoginActivity"
+            android:exported="true" />
         <activity android:name=".ui.auth.RegisterActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".ui.auth.PreRegisterActivity" />
+        <activity android:name=".ui.seller.SellerDashboardActivity" />
+        <activity android:name=".ui.seller.SellerProductsActivity" />
+        <activity android:name=".ui.seller.AddProductActivity" />
         <activity android:name=".ui.product.ProductDetailActivity" />
+        <activity android:name=".ui.cart.CartActivity" />
+        <activity android:name=".ui.checkout.CheckoutActivity" />
+        <activity android:name=".ui.profile.VoucherActivity" />
+        <activity android:name=".ui.profile.ConversationListActivity" />
 
     </application>
 

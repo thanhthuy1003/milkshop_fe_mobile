@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(v -> handleLogin());
 
         tvRegister.setOnClickListener(v -> {
-            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+            Intent intent = new Intent(LoginActivity.this, PreRegisterActivity.class);
             startActivity(intent);
         });
 
@@ -83,6 +83,9 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.putExtra("IS_GUEST", false);
+                    if (resource.data != null) {
+                        intent.putExtra("USER_ROLE", resource.data.getRole());
+                    }
                     startActivity(intent);
                     finish();
                     break;

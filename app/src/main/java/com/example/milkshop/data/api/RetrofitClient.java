@@ -7,9 +7,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
-    // Địa chỉ IP máy tính của bạn
-    private static final String IP_ADDRESS = "192.168.1.248"; 
-    private static final String BASE_URL = "http://" + IP_ADDRESS + ":5000/";
+    private static final String BASE_URL = "https://milkshop-eed0apdmggfmfpgv.southeastasia-01.azurewebsites.net/";
     
     private static Retrofit retrofit = null;
 

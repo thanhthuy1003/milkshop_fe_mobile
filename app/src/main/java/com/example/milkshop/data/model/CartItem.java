@@ -4,13 +4,13 @@ package com.example.milkshop.data.model;
  * Model đại diện cho một sản phẩm trong giỏ hàng.
  */
 public class CartItem {
-    private int productId;
+    private String productId;
     private String productName;
     private String productThumbnail;
     private double price;
     private int quantity;
 
-    public CartItem(int productId, String productName, String productThumbnail, double price, int quantity) {
+    public CartItem(String productId, String productName, String productThumbnail, double price, int quantity) {
         this.productId = productId;
         this.productName = productName;
         this.productThumbnail = productThumbnail;
@@ -18,7 +18,7 @@ public class CartItem {
         this.quantity = quantity;
     }
 
-    public int getProductId() { return productId; }
+    public String getProductId() { return productId; }
     public String getProductName() { return productName; }
     public String getProductThumbnail() { return productThumbnail; }
     public double getPrice() { return price; }

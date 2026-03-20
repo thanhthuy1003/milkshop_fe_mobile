@@ -37,13 +37,31 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvProducts"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/layout_search"
-        android:layout_above="@id/bottom_navigation_container"
-        android:padding="8dp"/>
+        android:layout_above="@id/bottom_navigation_container">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPagerBanners"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_margin="12dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvProducts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:padding="8dp"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <LinearLayout
         android:id="@+id/bottom_navigation_container"
@@ -73,7 +91,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Đăng nhập để đặt món ngay!"
+                    android:text="Đăng nhập để mua sữa hoặc bán hàng ngay!"
                     android:textColor="@color/black"
                     android:textSize="13sp"
                     android:textStyle="bold"/>
@@ -85,6 +103,43 @@
                     android:text="Login"
                     android:textSize="11sp"
                     android:backgroundTint="@color/primary_dark_blue"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardSellerPrompt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:background="@color/primary_dark_blue"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Chào người bán! Quản lý cửa hàng của bạn tại đây."
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:textStyle="bold"/>
+
+                <Button
+                    android:id="@+id/btnGoToSellerDashboard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dashboard"
+                    android:textSize="11sp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/primary_dark_blue"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

@@ -9,8 +9,14 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.milkshop.R;
+import com.example.milkshop.data.api.RetrofitClient;
 import com.example.milkshop.ui.auth.LoginActivity;
 import com.google.android.material.button.MaterialButton;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ProductDetailActivity extends AppCompatActivity {
 
@@ -28,6 +34,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         initViews();
         displayProductInfo();
+        loadReviews();
 
         btnAddToCart.setOnClickListener(v -> {
             if (isGuest) {
@@ -49,7 +56,6 @@ public class ProductDetailActivity extends AppCompatActivity {
     }
 
     private void displayProductInfo() {
-        // Nhận dữ liệu từ Intent (trong thực tế có thể gọi API theo ID)
         String name = getIntent().getStringExtra("PRODUCT_NAME");
         double price = getIntent().getDoubleExtra("PRODUCT_PRICE", 0);
         String desc = getIntent().getStringExtra("PRODUCT_DESC");
@@ -59,5 +65,22 @@ public class ProductDetailActivity extends AppCompatActivity {
         tvPrice.setText(String.format("%,.0fđ", price));
         tvDescription.setText(desc != null ? desc : "Không có mô tả cho sản phẩm này.");
         tvQuantity.setText(String.valueOf(qty));
+    }
+
+    private void loadReviews() {
+        String productId = getIntent().getStringExtra("PRODUCT_ID");
+        if (productId != null) {
+            RetrofitClient.getApiService().getProductReviews(productId, 1, 10).enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    // Logic hiển thị đánh giá (Sẽ cập nhật UI RecyclerView nếu cần)
+                }
+
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    // Xử lý lỗi
+                }
+            });
+        }
     }
 }

@@ -51,6 +51,22 @@ public interface ApiService {
     @PATCH("api/user/account/change-password")
     Call<ResponseBody> changePassword(@Body Object passwordChange);
 
+    // --- CartController ---
+    @GET("api/user/{userId}/cart")
+    Call<ResponseBody> getCart(@Path("userId") String userId, @Query("Page") Integer page, @Query("PageSize") Integer pageSize);
+
+    @POST("api/user/{userId}/cart")
+    Call<ResponseBody> addToCart(@Path("userId") String userId, @Body Object addToCartModel);
+
+    @PATCH("api/user/{userId}/cart/{productId}")
+    Call<ResponseBody> updateCartItem(@Path("userId") String userId, @Path("productId") String productId, @Body Object updateCartItemModel);
+
+    @DELETE("api/user/{userId}/cart/{productId}")
+    Call<ResponseBody> deleteCartItem(@Path("userId") String userId, @Path("productId") String productId);
+
+    @DELETE("api/user/{userId}/cart")
+    Call<ResponseBody> clearCart(@Path("userId") String userId);
+
     // --- ImageController ---
     @Multipart
     @POST("api/image")
@@ -70,7 +86,59 @@ public interface ApiService {
     @POST("api/products")
     Call<ResponseBody> createProduct(@Body Product product);
 
+    @PATCH("api/products/{productId}/preorder")
+    Call<ResponseBody> updatePreorder(@Path("productId") String productId, @Body Object preorderModel);
+
+    // --- Dashboard (Seller/Admin) ---
+    @GET("api/dashboard/orders")
+    Call<ResponseBody> getDashboardOrders(@Query("Page") Integer page, @Query("PageSize") Integer pageSize, @Query("OrderStatus") String status);
+
+    @GET("api/dashboard/orders/stats")
+    Call<ResponseBody> getOrderStats(@Query("FromOrderDate") String from, @Query("ToOrderDate") String to);
+
+    @GET("api/dashboard/products/stats")
+    Call<ResponseBody> getProductStats(@Query("From") String from, @Query("To") String to);
+
+    @PATCH("api/dashboard/orders/{id}/status")
+    Call<ResponseBody> updateOrderStatus(@Path("id") String id, @Body Object statusModel);
+
+    // --- Shipping (GHN) ---
+    @GET("api/shipping/provinces")
+    Call<ResponseBody> getProvinces();
+
+    @GET("api/shipping/districts/{provinceId}")
+    Call<ResponseBody> getDistricts(@Path("provinceId") int provinceId);
+
+    @GET("api/shipping/wards/{districtId}")
+    Call<ResponseBody> getWards(@Path("districtId") int districtId);
+
+    @GET("api/shipping/fee")
+    Call<ResponseBody> getShippingFee(@Query("FromDistrictId") int fromDistrictId, @Query("FromWardCode") String fromWardCode, @Query("TotalWeight") int totalWeight);
+
     // --- Checkout ---
     @POST("api/checkout")
     Call<ResponseBody> checkout(@Body CheckoutRequest checkoutRequest);
+
+    @POST("api/checkout/preorder")
+    Call<ResponseBody> checkoutPreorder(@Body Object preorderCheckoutRequest);
+    // --- BannerController ---
+    @GET("api/banners")
+    Call<ResponseBody> getBanners(@Query("Page") Integer page, @Query("PageSize") Integer pageSize);
+
+    // --- ConversationController ---
+    @GET("api/conversations")
+    Call<ResponseBody> getConversations(@Query("Page") Integer page, @Query("PageSize") Integer pageSize);
+
+    @GET("api/conversations/{conversationId}/messages")
+    Call<ResponseBody> getMessages(@Path("conversationId") String id, @Query("Page") Integer page, @Query("PageSize") Integer pageSize);
+
+    @POST("api/conversations/{otherUserId}")
+    Call<ResponseBody> startConversation(@Path("otherUserId") String otherUserId, @Body Object sendMessageModel);
+
+    // --- ReviewController ---
+    @GET("api/products/{productId}/reviews")
+    Call<ResponseBody> getProductReviews(@Path("productId") String productId, @Query("Page") Integer page, @Query("PageSize") Integer pageSize);
+
+    @POST("api/reviews")
+    Call<ResponseBody> createReview(@Body Object createReviewModel);
 }

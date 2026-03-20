@@ -23,17 +23,21 @@ import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText edtUsername, edtFirstName, edtLastName, edtEmail, edtPhone, edtPassword, edtConfirmPassword;
+    private EditText edtUsername, edtFirstName, edtLastName, edtEmail, edtPhone, edtPassword, edtConfirmPassword, edtShopName;
     private Button btnRegister;
     private TextView tvBackToLogin;
+    private String currentRole = "Customer";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        
+        currentRole = getIntent().getStringExtra("ROLE");
+        if (currentRole == null) currentRole = "Customer";
 
         initViews();
-
+        setupRoleUI();
         btnRegister.setOnClickListener(v -> handleRegister());
         tvBackToLogin.setOnClickListener(v -> finish());
     }
@@ -46,8 +50,17 @@ public class RegisterActivity extends AppCompatActivity {
         edtPhone = findViewById(R.id.edtPhone);
         edtPassword = findViewById(R.id.edtPassword);
         edtConfirmPassword = findViewById(R.id.edtConfirmPassword);
+        edtShopName = findViewById(R.id.edtShopName);
         btnRegister = findViewById(R.id.btnRegister);
         tvBackToLogin = findViewById(R.id.tvBackToLogin);
+    }
+
+    private void setupRoleUI() {
+        if ("Seller".equals(currentRole)) {
+            edtShopName.setVisibility(android.view.View.VISIBLE);
+        } else {
+            edtShopName.setVisibility(android.view.View.GONE);
+        }
     }
 
     private void handleRegister() {
@@ -58,7 +71,9 @@ public class RegisterActivity extends AppCompatActivity {
         String email = edtEmail.getText().toString().trim();
         String password = edtPassword.getText().toString().trim();
         String confirmPassword = edtConfirmPassword.getText().toString().trim();
-        String role = "Buyer"; // Default role for registration
+        String shopName = edtShopName.getText().toString().trim();
+        
+        String role = currentRole;
 
         if (username.isEmpty() || firstName.isEmpty() || lastName.isEmpty() || 
             phone.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
