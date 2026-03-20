@@ -179,7 +179,11 @@ public class MainActivity extends AppCompatActivity implements
                 return true;
             }
             if (id == R.id.nav_profile) {
-                Toast.makeText(this, "Tính năng Cá nhân", Toast.LENGTH_SHORT).show();
+                if (isGuest) {
+                    showLoginRequiredToast();
+                } else {
+                    startActivity(new Intent(this, com.example.milkshop.ui.profile.ProfileActivity.class));
+                }
                 return true;
             }
             return true;

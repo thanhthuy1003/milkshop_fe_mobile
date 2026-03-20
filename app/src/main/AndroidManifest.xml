@@ -32,6 +32,7 @@
         <activity android:name=".ui.product.ProductDetailActivity" />
         <activity android:name=".ui.cart.CartActivity" />
         <activity android:name=".ui.checkout.CheckoutActivity" />
+        <activity android:name=".ui.profile.ProfileActivity" />
         <activity android:name=".ui.profile.VoucherActivity" />
         <activity android:name=".ui.profile.ConversationListActivity" />
 
