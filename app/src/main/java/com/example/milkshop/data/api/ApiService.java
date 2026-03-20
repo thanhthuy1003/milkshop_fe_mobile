@@ -43,7 +43,7 @@ public interface ApiService {
 
     // --- UserController ---
     @GET("api/user/account/profile")
-    Call<ResponseBody> getProfile();
+    Call<com.example.milkshop.data.model.UserProfile> getProfile();
 
     @PATCH("api/user/account/profile")
     Call<ResponseBody> updateProfile(@Body Object profileUpdate);
@@ -81,7 +81,7 @@ public interface ApiService {
 
     // --- Product Management ---
     @GET("api/products")
-    Call<List<Product>> getProducts(@Query("categoryId") Integer categoryId, @Query("brandId") Integer brandId, @Query("searchTerm") String searchTerm);
+    Call<ResponseBody> getProducts(@Query("categoryId") Integer categoryId, @Query("brandId") Integer brandId, @Query("searchTerm") String searchTerm);
 
     @POST("api/products")
     Call<ResponseBody> createProduct(@Body Product product);

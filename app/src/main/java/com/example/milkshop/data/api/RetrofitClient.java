@@ -7,8 +7,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
-    // Sử dụng 10.0.2.2 cho Android Emulator hoặc localhost cho real device/máy host
-    private static final String BASE_URL = "http://10.0.2.2:5000/";
+    // Sử dụng địa chỉ IP máy tính cho thiết bị thật (Physical Device)
+    private static final String BASE_URL = "http://192.168.87.177:5000/";
     
     private static Retrofit retrofit = null;
 
