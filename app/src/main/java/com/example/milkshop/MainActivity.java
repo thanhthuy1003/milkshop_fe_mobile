@@ -6,6 +6,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 import android.widget.EditText;
 import android.widget.ImageView;
 import androidx.viewpager2.widget.ViewPager2;
@@ -21,6 +22,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.milkshop.data.api.RetrofitClient;
+import com.example.milkshop.ui.seller.SellerDashboardActivity;
 import com.example.milkshop.data.model.Product;
 import com.example.milkshop.ui.adapter.ProductAdapter;
 import com.example.milkshop.ui.auth.LoginActivity;

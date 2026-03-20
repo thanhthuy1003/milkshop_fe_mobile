@@ -29,7 +29,7 @@
         android:theme="@style/Theme.MilkShop"
         android:usesCleartextTraffic="true" >
         <activity
-            android:name="com.example.milkshop.ui.auth.LoginActivity"
+            android:name="com.example.milkshop.MainActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,9 +37,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.milkshop.ui.auth.LoginActivity"
+            android:exported="true" />
         <activity android:name="com.example.milkshop.ui.auth.RegisterActivity" />
-        <activity android:name="com.example.milkshop.MainActivity" />
+        <activity android:name="com.example.milkshop.ui.auth.PreRegisterActivity" />
+        <activity android:name="com.example.milkshop.ui.seller.SellerDashboardActivity" />
+        <activity android:name="com.example.milkshop.ui.seller.SellerProductsActivity" />
+        <activity android:name="com.example.milkshop.ui.seller.AddProductActivity" />
         <activity android:name="com.example.milkshop.ui.product.ProductDetailActivity" />
+        <activity android:name="com.example.milkshop.ui.cart.CartActivity" />
+        <activity android:name="com.example.milkshop.ui.checkout.CheckoutActivity" />
+        <activity android:name="com.example.milkshop.ui.profile.VoucherActivity" />
+        <activity android:name="com.example.milkshop.ui.profile.ConversationListActivity" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"

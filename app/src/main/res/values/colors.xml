@@ -13,4 +13,10 @@
     <color name="primary_blue">#81D4FA</color>
     <color name="primary_dark_blue">#4FC3F7</color>
     <color name="background_light">#F5F9FF</color>
+
+    <!-- Missing Colors for UI Components -->
+    <color name="gray_dark">#444444</color>
+    <color name="grey">#888888</color>
+    <color name="grey_light">#E0E0E0</color>
+    <color name="red">#FF0000</color>
 </resources>
