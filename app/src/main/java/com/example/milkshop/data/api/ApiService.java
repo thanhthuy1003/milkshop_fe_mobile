@@ -41,6 +41,12 @@ public interface ApiService {
     @POST("api/authentication/refresh-token")
     Call<LoginResponse> refreshToken(@Query("token") String token);
 
+    @POST("api/authentication/verify")
+    Call<ResponseBody> verifyAccount(@Query("token") String token);
+
+    @POST("api/authentication/activate-account")
+    Call<ResponseBody> activateAccount(@Query("email") String email);
+
     // --- UserController ---
     @GET("api/user/account/profile")
     Call<com.example.milkshop.data.model.UserProfile> getProfile();
@@ -53,13 +59,15 @@ public interface ApiService {
 
     // --- CartController ---
     @GET("api/user/{userId}/cart")
-    Call<ResponseBody> getCart(@Path("userId") String userId, @Query("Page") Integer page, @Query("PageSize") Integer pageSize);
+    Call<ResponseBody> getCart(@Path("userId") String userId, @Query("Page") Integer page,
+            @Query("PageSize") Integer pageSize);
 
     @POST("api/user/{userId}/cart")
     Call<ResponseBody> addToCart(@Path("userId") String userId, @Body Object addToCartModel);
 
     @PATCH("api/user/{userId}/cart/{productId}")
-    Call<ResponseBody> updateCartItem(@Path("userId") String userId, @Path("productId") String productId, @Body Object updateCartItemModel);
+    Call<ResponseBody> updateCartItem(@Path("userId") String userId, @Path("productId") String productId,
+            @Body Object updateCartItemModel);
 
     @DELETE("api/user/{userId}/cart/{productId}")
     Call<ResponseBody> deleteCartItem(@Path("userId") String userId, @Path("productId") String productId);
@@ -81,17 +89,56 @@ public interface ApiService {
 
     // --- Product Management ---
     @GET("api/products")
-    Call<ResponseBody> getProducts(@Query("categoryId") Integer categoryId, @Query("brandId") Integer brandId, @Query("searchTerm") String searchTerm);
+    Call<ResponseBody> getProducts(
+            @Query("categoryId") Integer categoryId,
+            @Query("brandId") Integer brandId,
+            @Query("searchTerm") String searchTerm,
+            @Query("minPrice") Double minPrice,
+            @Query("maxPrice") Double maxPrice,
+            @Query("status") String status,
+            @Query("Sort") String sort,
+            @Query("Page") Integer page,
+            @Query("PageSize") Integer pageSize
+    );
+
+    @GET("api/products/{id}")
+    Call<ResponseBody> getProductDetail(@Path("id") String id);
+
+    @GET("api/products/categories")
+    Call<ResponseBody> getCategories(
+            @Query("categoryStatus") String status,
+            @Query("parentId") Integer parentId,
+            @Query("Page") Integer page,
+            @Query("PageSize") Integer pageSize
+    );
+
+    @GET("api/products/brands")
+    Call<ResponseBody> getBrands(
+            @Query("brandStatus") String status,
+            @Query("Search") String search,
+            @Query("Page") Integer page,
+            @Query("PageSize") Integer pageSize
+    );
+
+    @GET("api/products/units")
+    Call<ResponseBody> getUnits();
+
+    @GET("api/products/attributes")
+    Call<ResponseBody> getAttributes();
 
     @POST("api/products")
     Call<ResponseBody> createProduct(@Body Product product);
+
+    @PATCH("api/products/{productId}")
+    Call<ResponseBody> updateProduct(@Path("productId") String id, @Body Object productUpdate);
 
     @PATCH("api/products/{productId}/preorder")
     Call<ResponseBody> updatePreorder(@Path("productId") String productId, @Body Object preorderModel);
 
     // --- Dashboard (Seller/Admin) ---
     @GET("api/dashboard/orders")
-    Call<ResponseBody> getDashboardOrders(@Query("Page") Integer page, @Query("PageSize") Integer pageSize, @Query("OrderStatus") String status);
+    Call<ResponseBody> getDashboardOrders(@Query("Page") Integer page, @Query("PageSize") Integer pageSize,
+            @Query("OrderStatus") String status);
 
     @GET("api/dashboard/orders/stats")
     Call<ResponseBody> getOrderStats(@Query("FromOrderDate") String from, @Query("ToOrderDate") String to);
@@ -113,7 +160,8 @@ public interface ApiService {
     Call<ResponseBody> getWards(@Path("districtId") int districtId);
 
     @GET("api/shipping/fee")
-    Call<ResponseBody> getShippingFee(@Query("FromDistrictId") int fromDistrictId, @Query("FromWardCode") String fromWardCode, @Query("TotalWeight") int totalWeight);
+    Call<ResponseBody> getShippingFee(@Query("FromDistrictId") int fromDistrictId,
+            @Query("FromWardCode") String fromWardCode, @Query("TotalWeight") int totalWeight);
 
     // --- Checkout ---
     @POST("api/checkout")
@@ -121,6 +169,7 @@ public interface ApiService {
 
     @POST("api/checkout/preorder")
     Call<ResponseBody> checkoutPreorder(@Body Object preorderCheckoutRequest);
+
     // --- BannerController ---
     @GET("api/banners")
     Call<ResponseBody> getBanners(@Query("Page") Integer page, @Query("PageSize") Integer pageSize);
@@ -130,14 +179,16 @@ public interface ApiService {
     Call<ResponseBody> getConversations(@Query("Page") Integer page, @Query("PageSize") Integer pageSize);
 
     @GET("api/conversations/{conversationId}/messages")
-    Call<ResponseBody> getMessages(@Path("conversationId") String id, @Query("Page") Integer page, @Query("PageSize") Integer pageSize);
+    Call<ResponseBody> getMessages(@Path("conversationId") String id, @Query("Page") Integer page,
+            @Query("PageSize") Integer pageSize);
 
     @POST("api/conversations/{otherUserId}")
     Call<ResponseBody> startConversation(@Path("otherUserId") String otherUserId, @Body Object sendMessageModel);
 
     // --- ReviewController ---
     @GET("api/products/{productId}/reviews")
-    Call<ResponseBody> getProductReviews(@Path("productId") String productId, @Query("Page") Integer page, @Query("PageSize") Integer pageSize);
+    Call<ResponseBody> getProductReviews(@Path("productId") String productId, @Query("Page") Integer page,
+            @Query("PageSize") Integer pageSize);
 
     @POST("api/reviews")
     Call<ResponseBody> createReview(@Body Object createReviewModel);

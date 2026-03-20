@@ -73,7 +73,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void loadUserProfile() {
-        RetrofitClient.getApiService().getProfile().enqueue(new Callback<UserProfile>() {
+        RetrofitClient.getApiService(this).getProfile().enqueue(new Callback<UserProfile>() {
             @Override
             public void onResponse(Call<UserProfile> call, Response<UserProfile> response) {
                 if (response.isSuccessful() && response.body() != null) {

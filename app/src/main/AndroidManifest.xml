@@ -25,6 +25,7 @@
             android:name=".ui.auth.LoginActivity"
             android:exported="true" />
         <activity android:name=".ui.auth.RegisterActivity" />
+        <activity android:name=".ui.auth.VerificationActivity" />
         <activity android:name=".ui.auth.PreRegisterActivity" />
         <activity android:name=".ui.seller.SellerDashboardActivity" />
         <activity android:name=".ui.seller.SellerProductsActivity" />

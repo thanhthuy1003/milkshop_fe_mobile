@@ -32,6 +32,11 @@ public class LoginActivity extends AppCompatActivity {
 
         authViewModel = new ViewModelProvider(this).get(AuthViewModel.class);
         initViews();
+        
+        String prefilledUser = getIntent().getStringExtra("USERNAME");
+        if (prefilledUser != null) {
+            edtUsername.setText(prefilledUser);
+        }
 
         btnLogin.setOnClickListener(v -> handleLogin());
 

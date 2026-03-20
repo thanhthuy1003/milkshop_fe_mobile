@@ -6,60 +6,106 @@
     android:background="@color/background_light">
 
     <include
-        android:id="@+id/included_header"
-        layout="@layout/layout_header" />
-
-    <LinearLayout
-        android:id="@+id/layout_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/included_header"
-        android:padding="12dp"
-        android:orientation="vertical">
-
-        <EditText
-            android:id="@+id/edtSearch"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:hint="Tìm kiếm sữa, trà sữa..."
-            android:background="@drawable/bg_edittext"
-            android:paddingLeft="16dp"
-            android:drawableStart="@android:drawable/ic_menu_search"
-            android:drawablePadding="8dp"
-            android:textSize="14sp"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvCategories"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-    </LinearLayout>
+        android:id="@+id/layoutHomeHeader"
+        layout="@layout/layout_home_header" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/layout_search"
+        android:layout_below="@id/layoutHomeHeader"
         android:layout_above="@id/bottom_navigation_container">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="20dp">
 
+            <!-- Search Section -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp">
+                
+                <EditText
+                    android:id="@+id/edtSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@android:color/transparent"
+                    android:hint="Tìm kiếm sữa, trà sữa..."
+                    android:paddingHorizontal="16dp"
+                    android:drawableStart="@android:drawable/ic_menu_search"
+                    android:drawablePadding="10dp"
+                    android:textSize="14sp"
+                    android:imeOptions="actionSearch"
+                    android:singleLine="true"/>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Banner Carousel -->
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewPagerBanners"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
-                android:layout_margin="12dp" />
+                android:layout_marginBottom="24dp" />
 
+            <!-- Category Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Danh mục"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="@color/text_primary"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="12dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCategories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingHorizontal="16dp"
+                android:layout_marginBottom="24dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+            <!-- Product Section Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="12dp">
+                
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Tất cả sản phẩm"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:textColor="@color/text_primary" />
+                    
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Xem thêm"
+                    android:textColor="@color/primary"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- Product Grid -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvProducts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false"
-                android:padding="8dp"/>
+                android:paddingHorizontal="8dp"/>
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
@@ -75,7 +121,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            app:cardCornerRadius="8dp"
+            app:cardCornerRadius="12dp"
             app:cardElevation="4dp"
             android:visibility="gone">
 
@@ -83,26 +129,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="12dp"
-                android:background="@color/primary_light_blue"
+                android:padding="16dp"
+                android:background="@color/primary"
                 android:gravity="center_vertical">
-
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Đăng nhập để mua sữa hoặc bán hàng ngay!"
-                    android:textColor="@color/black"
-                    android:textSize="13sp"
+                    android:text="Đăng nhập để nhận ưu đãi!"
+                    android:textColor="@color/white"
                     android:textStyle="bold"/>
-
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnPromptLogin"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Login"
-                    android:textSize="11sp"
-                    android:backgroundTint="@color/primary_dark_blue"/>
+                    android:text="Đăng nhập"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/primary_dark"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -111,7 +155,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            app:cardCornerRadius="8dp"
+            app:cardCornerRadius="12dp"
             app:cardElevation="4dp"
             android:visibility="gone">
 
@@ -119,27 +163,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="12dp"
-                android:background="@color/primary_dark_blue"
+                android:padding="16dp"
+                android:background="@color/grey_dark"
                 android:gravity="center_vertical">
-
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Chào người bán! Quản lý cửa hàng của bạn tại đây."
-                    android:textColor="@color/white"
-                    android:textSize="13sp"
-                    android:textStyle="bold"/>
-
-                <Button
+                    android:text="Quản lý cửa hàng ngay"
+                    android:textColor="@color/white"/>
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnGoToSellerDashboard"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Dashboard"
-                    android:textSize="11sp"
-                    android:backgroundTint="@color/white"
-                    android:textColor="@color/primary_dark_blue"/>
+                    android:textColor="@color/grey_dark"
+                    android:backgroundTint="@color/white"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

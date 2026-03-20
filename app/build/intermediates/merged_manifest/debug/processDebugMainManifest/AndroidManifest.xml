@@ -41,6 +41,7 @@
             android:name="com.example.milkshop.ui.auth.LoginActivity"
             android:exported="true" />
         <activity android:name="com.example.milkshop.ui.auth.RegisterActivity" />
+        <activity android:name="com.example.milkshop.ui.auth.VerificationActivity" />
         <activity android:name="com.example.milkshop.ui.auth.PreRegisterActivity" />
         <activity android:name="com.example.milkshop.ui.seller.SellerDashboardActivity" />
         <activity android:name="com.example.milkshop.ui.seller.SellerProductsActivity" />
@@ -48,6 +49,7 @@
         <activity android:name="com.example.milkshop.ui.product.ProductDetailActivity" />
         <activity android:name="com.example.milkshop.ui.cart.CartActivity" />
         <activity android:name="com.example.milkshop.ui.checkout.CheckoutActivity" />
+        <activity android:name="com.example.milkshop.ui.profile.ProfileActivity" />
         <activity android:name="com.example.milkshop.ui.profile.VoucherActivity" />
         <activity android:name="com.example.milkshop.ui.profile.ConversationListActivity" />
 

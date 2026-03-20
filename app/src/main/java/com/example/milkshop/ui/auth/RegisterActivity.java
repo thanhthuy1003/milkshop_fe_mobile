@@ -1,5 +1,6 @@
 package com.example.milkshop.ui.auth;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -13,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.milkshop.R;
 import com.example.milkshop.data.api.RetrofitClient;
 import com.example.milkshop.data.model.RegisterRequest;
+import com.google.gson.Gson;
 
 import java.io.IOException;
 
@@ -97,17 +99,25 @@ public class RegisterActivity extends AppCompatActivity {
                 role
         );
 
+        Log.d("RegisterActivity", "Request Payload: " + new Gson().toJson(request));
+
         RetrofitClient.getApiService().signUp(request).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(RegisterActivity.this, "Đăng ký thành công! Vui lòng kiểm tra email.", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(RegisterActivity.this, VerificationActivity.class);
+                    intent.putExtra("EMAIL", email);
+                    intent.putExtra("USERNAME", username);
+                    startActivity(intent);
                     finish();
                 } else {
-                    StringBuilder errorMessage = new StringBuilder("Đăng ký thất bại. Mã lỗi: " + response.code());
+                    StringBuilder errorMessage = new StringBuilder("Đăng ký thất bại (Code: " + response.code() + ")");
                     try (ResponseBody errorBody = response.errorBody()) {
                         if (errorBody != null) {
-                            errorMessage.append("\n").append(errorBody.string());
+                            String errorJson = errorBody.string();
+                            Log.e("RegisterActivity", "Error Response: " + errorJson);
+                            errorMessage.append("\n").append(errorJson);
                         }
                     } catch (IOException e) {
                         Log.e("RegisterActivity", "Error parsing error body", e);

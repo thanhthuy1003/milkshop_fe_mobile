@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:2:1-40:12
-INJECTED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:2:1-40:12
-INJECTED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:2:1-40:12
-INJECTED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:2:1-40:12
+ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:2:1-42:12
+INJECTED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:2:1-42:12
+INJECTED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:2:1-42:12
+INJECTED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:2:1-42:12
 MERGED from [com.google.android.material:material:1.9.0] C:\Users\Hi\.gradle\caches\8.13\transforms\74b74808373ab0205595ee932546f0dd\transformed\material-1.9.0\AndroidManifest.xml:17:1-26:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\Hi\.gradle\caches\8.13\transforms\7eb027e7305127024cd5dad21ffe3a42\transformed\constraintlayout-2.1.4\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] C:\Users\Hi\.gradle\caches\8.13\transforms\7011d89884e6a3063a6ce55edd9f882f\transformed\jetified-appcompat-resources-1.6.1\AndroidManifest.xml:17:1-22:12
@@ -62,8 +62,8 @@ ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:4:5-67
 	android:name
 		ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:4:22-64
 application
-ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:6:5-38:19
-INJECTED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:6:5-38:19
+ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:6:5-40:19
+INJECTED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:6:5-40:19
 MERGED from [com.google.android.material:material:1.9.0] C:\Users\Hi\.gradle\caches\8.13\transforms\74b74808373ab0205595ee932546f0dd\transformed\material-1.9.0\AndroidManifest.xml:24:5-20
 MERGED from [com.google.android.material:material:1.9.0] C:\Users\Hi\.gradle\caches\8.13\transforms\74b74808373ab0205595ee932546f0dd\transformed\material-1.9.0\AndroidManifest.xml:24:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\Hi\.gradle\caches\8.13\transforms\7eb027e7305127024cd5dad21ffe3a42\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -130,42 +130,50 @@ activity#com.example.milkshop.ui.auth.RegisterActivity
 ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:27:9-62
 	android:name
 		ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:27:19-59
+activity#com.example.milkshop.ui.auth.VerificationActivity
+ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:28:9-66
+	android:name
+		ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:28:19-63
 activity#com.example.milkshop.ui.auth.PreRegisterActivity
-ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:28:9-65
+ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:29:9-65
 	android:name
-		ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:28:19-62
+		ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:29:19-62
 activity#com.example.milkshop.ui.seller.SellerDashboardActivity
-ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:29:9-71
+ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:30:9-71
 	android:name
-		ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:29:19-68
+		ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:30:19-68
 activity#com.example.milkshop.ui.seller.SellerProductsActivity
-ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:30:9-70
+ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:31:9-70
 	android:name
-		ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:30:19-67
+		ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:31:19-67
 activity#com.example.milkshop.ui.seller.AddProductActivity
-ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:31:9-66
+ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:32:9-66
 	android:name
-		ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:31:19-63
+		ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:32:19-63
 activity#com.example.milkshop.ui.product.ProductDetailActivity
-ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:32:9-70
+ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:33:9-70
 	android:name
-		ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:32:19-67
+		ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:33:19-67
 activity#com.example.milkshop.ui.cart.CartActivity
-ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:33:9-58
+ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:34:9-58
 	android:name
-		ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:33:19-55
+		ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:34:19-55
 activity#com.example.milkshop.ui.checkout.CheckoutActivity
-ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:34:9-66
+ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:35:9-66
 	android:name
-		ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:34:19-63
+		ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:35:19-63
+activity#com.example.milkshop.ui.profile.ProfileActivity
+ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:36:9-64
+	android:name
+		ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:36:19-61
 activity#com.example.milkshop.ui.profile.VoucherActivity
-ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:35:9-64
+ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:37:9-64
 	android:name
-		ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:35:19-61
+		ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:37:19-61
 activity#com.example.milkshop.ui.profile.ConversationListActivity
-ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:36:9-73
+ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:38:9-73
 	android:name
-		ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:36:19-70
+		ADDED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml:38:19-70
 uses-sdk
 INJECTED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\github\milkshop_fe_mobile\app\src\main\AndroidManifest.xml

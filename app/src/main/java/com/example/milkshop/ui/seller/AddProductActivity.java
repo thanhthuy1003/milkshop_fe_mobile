@@ -64,7 +64,7 @@ public class AddProductActivity extends AppCompatActivity {
         newProduct.setThumbnail(thumb);
         newProduct.setStatusId(1); // Mặc định là 'Đang bán'
 
-        RetrofitClient.getApiService().createProduct(newProduct).enqueue(new Callback<ResponseBody>() {
+        RetrofitClient.getApiService(this).createProduct(newProduct).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
